@@ -1,0 +1,47 @@
+[project]
+name = "disk_health_monitor"
+version = "1.0.0"
+description = "Projet Python structuré avec SOLID, mypy, ruff et pytest"
+requires-python = ">=3.11"
+
+# Dépendances de base
+dependencies = [
+    "pyside6>=6.9.2",
+    "matplotlib>=3.10.6",
+]
+
+# Dépendances optionnelles
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
+    "mypy>=1.18.1",
+    "ruff>=0.13.0",
+    "pytest-asyncio",
+    "pyinstaller>=6.16.0"
+]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+warn_return_any = true
+warn_unused_ignores = true
+show_error_codes = true
+exclude = [
+    "^main\\.py$",        # fichiers nommés exactement "main.py"
+    "^main_claude\\.py$", # fichiers nommés exactement "main_claude.py"
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 88
+exclude = ["main.py", "main_claude.py", ".venv/", "build/", "dist/", "tests/"]
+# ⚠️ Les règles de lint sont déplacées sous la section dédiée
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["D", "COM812",]  # ignore les docstrings + conflit avec formatter
+
